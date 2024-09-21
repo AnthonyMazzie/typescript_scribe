@@ -16,9 +16,9 @@
    - [Custom Type Names](#custom-type-names)
    - [Nested Object Structures](#nested-object-structures)
 4. [Contributing](CONTRIBUTING.md)
-  - [Pipeline](CONTRIBUTING.md#pipeline)
-  - [Linting with XO](CONTRIBUTING.md#linting-with-xo)
-  - [Testing with Vitest](CONTRIBUTING.md#testing-with-vitest)
+   - [Pipeline](CONTRIBUTING.md#pipeline)
+   - [Linting with XO](CONTRIBUTING.md#linting-with-xo)
+   - [Testing with Vitest](CONTRIBUTING.md#testing-with-vitest)
 5. [License](#license)
 
 ## Installation
