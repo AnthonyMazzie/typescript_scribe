@@ -1,0 +1,71 @@
+{
+    "name": "typescript_scribe",
+    "version": "0.1.0",
+    "description": "A library to infer JavaScript object structures and generate TypeScript types.",
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.mjs",
+    "types": "./dist/types/index.d.ts",
+    "exports": {
+        ".": {
+            "require": "./dist/cjs/index.js",
+            "import": "./dist/esm/index.mjs"
+        }
+    },
+    "scripts": {
+        "build:cjs": "tsc -p tsconfig.cjs.json",
+        "build:esm": "tsc -p tsconfig.esm.json",
+        "build": "npm run build:cjs && npm run build:esm",
+        "test": "vitest",
+        "lint": "xo",
+        "format": "prettier --write 'src/**/*.{js,ts,json,md}'",
+        "prepare": "npm run build"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AnthonyMazzie/typescript_scribe.git"
+    },
+    "keywords": [
+        "typescript",
+        "type inference",
+        "dynamic types"
+    ],
+    "author": "Anthony Mazzie (https://github.com/AnthonyMazzie)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/AnthonyMazzie/typescript_scribe/issues"
+    },
+    "homepage": "https://github.com/AnthonyMazzie/typescript_scribe#readme",
+    "devDependencies": {
+        "@babel/core": "^7.25.2",
+        "@babel/preset-env": "^7.25.4",
+        "@types/jest": "^29.5.13",
+        "@typescript-eslint/eslint-plugin": "^8.6.0",
+        "@typescript-eslint/parser": "^8.6.0",
+        "babel-jest": "^29.7.0",
+        "jest": "^29.7.0",
+        "prettier": "^3.3.3",
+        "ts-jest": "^29.2.5",
+        "typescript": "^5.6.2",
+        "vitest": "^2.1.1",
+        "xo": "^0.59.3"
+    },
+    "xo": {
+        "extends": [
+            "xo-typescript"
+        ],
+        "extensions": [
+            "ts"
+        ],
+        "rules": {
+            "@typescript-eslint/no-explicit-any": "off"
+        },
+        "ignores": [
+            "test/**"
+        ]
+    }
+}
