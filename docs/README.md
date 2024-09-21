@@ -15,12 +15,11 @@
 3. [Advanced Usage](#advanced-usage)
    - [Custom Type Names](#custom-type-names)
    - [Nested Object Structures](#nested-object-structures)
-4. [Development](#development)
-   - [Contributing](CONTRIBUTING.md)
-      - [Pipeline](CONTRIBUTING.md#pipeline)
-      - [Linting with XO](CONTRIBUTING.md#linting-with-xo)
-      - [Testing with Vitest](CONTRIBUTING.md#testing-with-vitest)
-6. [License](#license)
+4. [Contributing](CONTRIBUTING.md)
+  - [Pipeline](CONTRIBUTING.md#pipeline)
+  - [Linting with XO](CONTRIBUTING.md#linting-with-xo)
+  - [Testing with Vitest](CONTRIBUTING.md#testing-with-vitest)
+5. [License](#license)
 
 ## Installation
 
@@ -148,12 +147,6 @@ type ComplexType = {
   };
 };
 ```
-
-## Development
-
-For those contributing or working on the project, here are some key details:
-
-
 
 ## License
 This project is licensed under the MIT License.
