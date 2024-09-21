@@ -16,9 +16,10 @@
    - [Custom Type Names](#custom-type-names)
    - [Nested Object Structures](#nested-object-structures)
 4. [Development](#development)
-   - [Contributing](#contributing)
-   - [Linting with XO](#linting-with-xo)
-   - [Testing with Vitest](#testing-with-vitest)
+   - [Contributing](CONTRIBUTING.md)
+      - [Pipeline](CONTRIBUTING.md#pipeline)
+      - [Linting with XO](CONTRIBUTING.md#linting-with-xo)
+      - [Testing with Vitest](CONTRIBUTING.md#testing-with-vitest)
 6. [License](#license)
 
 ## Installation
@@ -152,35 +153,7 @@ type ComplexType = {
 
 For those contributing or working on the project, here are some key details:
 
-### Contributing
 
-Contributions are welcome! Feel free to open issues or submit pull requests to improve the library. Whether it's bug fixes, new features, or documentation improvements, all contributions help make the project better.
-
-For more details on contributing, visit the [GitHub repository](https://github.com/AnthonyMazzie/typescript_scribe).
-
-### Linting with XO
-
-We use **XO** as our linter for `typescript_scribe` because it is a zero-config, opinionated linter that works great for TypeScript and JavaScript projects. It enforces best practices with minimal configuration, making it a lightweight and fast tool to keep the codebase clean.
-
-To run the linter:
-
-```bash
-npm run lint
-```
-
-For more details, check out the official [XO documentation](https://github.com/xojs/xo).
-
-### Testing with Vitest
-
-**Vitest** was chosen as the test framework for this project because it is modern, fast, and supports both TypeScript and ES Modules seamlessly. Vitest’s API is similar to Jest, but with much better performance, making it perfect for TypeScript libraries.
-
-To run the tests:
-
-```bash
-npm run test
-```
-
-For more details, check out the official [Vitest documentation](https://vitest.dev/).
 
 ## License
 This project is licensed under the MIT License.
