@@ -28,47 +28,92 @@ import { InferredType } from './types';
  * inferType(Promise.resolve()) // Returns 'Promise'
  */
 export function inferType(value: any): InferredType {
+  // Log the current value being inferred for better tracking
+  console.log('Inferring type for value:', value);
+
   // Handle undefined and null values
-  if (value === undefined) return 'undefined';
-  if (value === null) return 'null';  // Return 'null'
+  if (value === undefined) {
+    console.log('Decided type: undefined');
+    return 'undefined';
+  }
+  if (value === null) {
+    console.log('Decided type: null');
+    return 'null';
+  }
 
   // Handle primitive types (string, number, boolean)
-  if (typeof value === 'string') return 'string';
-  if (typeof value === 'number') return 'number';
-  if (typeof value === 'boolean') return 'boolean';
+  if (typeof value === 'string') {
+    console.log('Decided type: string');
+    return 'string';
+  }
+  if (typeof value === 'number') {
+    console.log('Decided type: number');
+    return 'number';
+  }
+  if (typeof value === 'boolean') {
+    console.log('Decided type: boolean');
+    return 'boolean';
+  }
 
   // Handle arrays, including empty arrays
   if (Array.isArray(value)) {
     if (value.length === 0) {
+      console.warn('Empty array detected');
+      console.log('Decided type: unknown[] (empty array)');
       return ['unknown']; // Empty arrays default to 'unknown[]'
     }
 
-    // Infer types of array elements, check for mixed types
-    const elementTypes = [...new Set(value.map(inferType))];
-    return elementTypes.length === 1 ? [elementTypes[0]] : ['mixed'];
+    // Infer types of array elements
+    const elementTypes = value.map(inferType);
+
+    // Check if all elements in the array are of the same type
+    const uniqueElementTypes = [...new Set(elementTypes.map(el => JSON.stringify(el)))].map(el => JSON.parse(el));
+
+    if (uniqueElementTypes.length > 1) {
+      console.warn(`Decided mixed type for array at value:`, value);
+      return ['mixed']; // Handle mixed types
+    }
+
+    console.log('Decided array type:', [uniqueElementTypes[0]]);
+    return [uniqueElementTypes[0]];
   }
 
-  // Handle objects (but exclude null values)
+  // Handle objects (excluding null values)
   if (typeof value === 'object' && value !== null) {
     if (value instanceof Promise) {
+      console.log('Decided type: Promise');
       return 'Promise'; // Special case for Promises
+    }
+
+    if (Object.keys(value).length === 0) {
+      console.warn('Empty object detected');
+      console.log('Decided type: {} (empty object)');
+      return {}; // Return an empty object if the object is empty
     }
 
     // Recursively infer types for each property in the object
     const result: { [key: string]: InferredType } = {};
     for (const key in value) {
       if (value.hasOwnProperty(key)) {
-        // Check if the property is a function and throw an error
         if (typeof value[key] === 'function') {
-          throw new Error('Functions are not supported for type inference.');
+          throw new Error(`Functions are not supported for type inference. Problematic key: ${key}`);
         }
+
+        // Log the key and value being inferred in the object
+        console.log(`Inferring type for key: ${key}, value:`, value[key]);
+
+        // Recursively infer the type for the property
         result[key] = inferType(value[key]);
+
+        // Log the inferred type for this key
+        console.log(`Decided type for key "${key}":`, result[key]);
       }
     }
     return result;
   }
 
   // Default to 'unknown' for unrecognized types
+  console.log('Decided type: unknown');
   return 'unknown';
 }
 
@@ -118,21 +163,20 @@ export function generateTypeScriptType(
 
     if (Array.isArray(type)) {
       return `${formatType(type[0], level)}[]`; // Format arrays based on the type of their elements
-    } else if (typeof type === 'object' && type !== null) { // Correct null check
-      // Map over object properties and format each key: type pair
+    } else if (typeof type === 'object' && type !== null) {
+      // Format object properties
       const objectParts = Object.keys(type).map(
-        (key) => `${indent}${key}: ${formatType(type[key], level + 1)};`,
+        (key) => `${indent}${key}: ${formatType(type[key], level + 1)};`
       );
-      return `{\n${objectParts.join('\n')}\n${'  '.repeat(level - 1)}}`; // Add closing brace at the correct level
+      return `{\n${objectParts.join('\n')}\n${'  '.repeat(level - 1)}}`;
     } else {
-      // Convert 'null' to 'unknown' to match the test expectation
-      return type === 'null' ? 'unknown' : type as string;
+      return type === 'null' ? 'unknown' : (type as string);
     }
   };
 
   // Format each top-level property and generate the final TypeScript type definition
   const typeParts = Object.keys(inferred).map(
-    (key) => `  ${key}: ${formatType(inferred[key], 1)};`,
+    (key) => `  ${key}: ${formatType(inferred[key], 1)};`
   );
 
   return `type ${typeName} = {\n${typeParts.join('\n')}\n};`;
