@@ -29,37 +29,29 @@ import { InferredType } from './types';
  */
 export function inferType(value: any): InferredType {
   // Log the current value being inferred for better tracking
-  console.log('Inferring type for value:', value);
 
   // Handle undefined and null values
   if (value === undefined) {
-    console.log('Decided type: undefined');
     return 'undefined';
   }
   if (value === null) {
-    console.log('Decided type: null');
     return 'null';
   }
 
   // Handle primitive types (string, number, boolean)
   if (typeof value === 'string') {
-    console.log('Decided type: string');
     return 'string';
   }
   if (typeof value === 'number') {
-    console.log('Decided type: number');
     return 'number';
   }
   if (typeof value === 'boolean') {
-    console.log('Decided type: boolean');
     return 'boolean';
   }
 
   // Handle arrays, including empty arrays
   if (Array.isArray(value)) {
     if (value.length === 0) {
-      console.warn('Empty array detected');
-      console.log('Decided type: unknown[] (empty array)');
       return ['unknown']; // Empty arrays default to 'unknown[]'
     }
 
@@ -70,24 +62,19 @@ export function inferType(value: any): InferredType {
     const uniqueElementTypes = [...new Set(elementTypes.map(el => JSON.stringify(el)))].map(el => JSON.parse(el));
 
     if (uniqueElementTypes.length > 1) {
-      console.warn(`Decided mixed type for array at value:`, value);
       return ['mixed']; // Handle mixed types
     }
 
-    console.log('Decided array type:', [uniqueElementTypes[0]]);
     return [uniqueElementTypes[0]];
   }
 
   // Handle objects (excluding null values)
   if (typeof value === 'object' && value !== null) {
     if (value instanceof Promise) {
-      console.log('Decided type: Promise');
       return 'Promise'; // Special case for Promises
     }
 
     if (Object.keys(value).length === 0) {
-      console.warn('Empty object detected');
-      console.log('Decided type: {} (empty object)');
       return {}; // Return an empty object if the object is empty
     }
 
@@ -99,21 +86,14 @@ export function inferType(value: any): InferredType {
           throw new Error(`Functions are not supported for type inference. Problematic key: ${key}`);
         }
 
-        // Log the key and value being inferred in the object
-        console.log(`Inferring type for key: ${key}, value:`, value[key]);
-
         // Recursively infer the type for the property
         result[key] = inferType(value[key]);
-
-        // Log the inferred type for this key
-        console.log(`Decided type for key "${key}":`, result[key]);
       }
     }
     return result;
   }
 
   // Default to 'unknown' for unrecognized types
-  console.log('Decided type: unknown');
   return 'unknown';
 }
 
