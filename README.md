@@ -57,14 +57,13 @@ const myObj = {
 const inferred = inferType(myObj);
 console.log(inferred);
 
-/* Output:
+// Output:
 {
   id: 'number',
   name: 'string',
   time: 'Date',
   tasks: ['string']
 }
-*/
 ```
 
 ### Generate TypeScript Type
@@ -80,13 +79,12 @@ const myObj = { id: 1, name: "Anthony", tasks: ["code", "sleep", "repeat"] };
 const tsType = generateTypeScriptType(myObj);
 console.log(tsType);
 
-/* Output:
+// Output:
 type GeneratedType = {
   id: number;
   name: string;
   tasks: string[];
 };
-*/
 ```
 
 ---
@@ -103,13 +101,12 @@ const myObj = { id: 1, name: "Anthony", tasks: ["code", "sleep", "repeat"] };
 const tsType = generateTypeScriptType(myObj, 'CustomType');
 console.log(tsType);
 
-/* Output:
+// Output:
 type CustomType = {
   id: number;
   name: string;
   tasks: string[];
 };
-*/
 ```
 
 ### Nested Object Structures
@@ -130,7 +127,8 @@ const complexObj = {
 
 const inferredComplex = inferType(complexObj);
 console.log(inferredComplex);
-/* Output:
+
+// Output:
 {
   id: 'number',
   profile: {
@@ -141,11 +139,11 @@ console.log(inferredComplex);
     }
   }
 }
-*/
 
 const tsComplexType = generateTypeScriptType(complexObj, 'ComplexType');
 console.log(tsComplexType);
-/* Output:
+
+// Output:
 type ComplexType = {
   id: number;
   profile: {
