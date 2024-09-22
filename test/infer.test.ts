@@ -52,7 +52,7 @@ describe('inferType', () => {
         const objWithNull = { id: 1, profile: null };
         expect(inferType(objWithNull)).toEqual({
             id: 'number',
-            profile: 'unknown',
+            profile: 'null',
         });
     });
 
@@ -84,5 +84,19 @@ describe('inferType', () => {
         expect(inferType(mixedArrayObj)).toEqual({
             data: ['mixed'],
         });
+    });
+
+    // New tests for improvements
+    it('should handle undefined values', () => {
+        const objWithUndefined = { id: 1, profile: undefined };
+        expect(inferType(objWithUndefined)).toEqual({
+            id: 'number',
+            profile: 'undefined',
+        });
+    });
+
+    it('should throw an error when a function is passed', () => {
+        const objWithFunction = { id: 1, getName: () => 'Anthony' };
+        expect(() => inferType(objWithFunction)).toThrow('Functions are not supported for type inference.');
     });
 });

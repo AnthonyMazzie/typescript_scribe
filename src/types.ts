@@ -9,5 +9,7 @@ export type InferredType =
   | 'unknown'
   | 'mixed'
   | 'Promise'
+  | 'undefined'
+  | 'null'
   | { [key: string]: InferredType }
   | InferredType[];
