@@ -13,7 +13,7 @@ describe('generateTypeScriptType', () => {
     it('should generate a TypeScript type from a nested object', () => {
         const nestedObj = {
             id: 1,
-            profile: { name: 'Anthony', age: 30 },
+            profile: { name: 'Anthony', age: 35 },
         };
         const tsType = generateTypeScriptType(nestedObj, 'ProfileType');
 
@@ -59,8 +59,8 @@ describe('generateTypeScriptType', () => {
             user: {
                 profile: {
                     details: {
-                        age: 30,
-                        name: 'John',
+                        age: 35,
+                        name: 'Anthony',
                     },
                 },
             },
@@ -75,7 +75,7 @@ describe('generateTypeScriptType', () => {
     });
 
     it('should generate TypeScript type for mixed arrays with nested objects', () => {
-        const mixedArrayObj = { data: [1, { name: 'John' }, true] };
+        const mixedArrayObj = { data: [1, { name: 'Anthony' }, true] };
         const tsType = generateTypeScriptType(mixedArrayObj, 'MixedArrayType');
         expect(tsType).toMatch(/type MixedArrayType = {/);
         expect(tsType).toMatch(/data: mixed\[\];/);

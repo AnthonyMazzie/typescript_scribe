@@ -22,7 +22,7 @@ describe('inferType', () => {
     it('should handle nested objects', () => {
         const nestedObj = {
             id: 1,
-            profile: { name: 'Anthony', age: 30 },
+            profile: { name: 'Anthony', age: 35 },
         };
         expect(inferType(nestedObj)).toEqual({
             id: 'number',
@@ -61,8 +61,8 @@ describe('inferType', () => {
             user: {
                 profile: {
                     details: {
-                        age: 30,
-                        name: 'John',
+                        age: 35,
+                        name: 'Anthony',
                     },
                 },
             },
@@ -80,7 +80,7 @@ describe('inferType', () => {
     });
 
     it('should handle mixed arrays with nested objects', () => {
-        const mixedArrayObj = { data: [1, { name: 'John' }, true] };
+        const mixedArrayObj = { data: [1, { name: 'Anthony' }, true] };
         expect(inferType(mixedArrayObj)).toEqual({
             data: ['mixed'],
         });
