@@ -1,7 +1,7 @@
 {
     "name": "typescript_scribe",
-    "version": "0.1.5",
-    "description": "A library to infer JavaScript object structures and generate TypeScript types.",
+    "version": "0.1.8",
+    "description": "A lightweight library to infer JavaScript object structures at runtime and generate TypeScript types, helping developers ensure type safety and reduce manual type definitions.",
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.mjs",
     "types": "./dist/types/index.d.ts",
@@ -32,7 +32,17 @@
     "keywords": [
         "typescript",
         "type inference",
-        "dynamic types"
+        "dynamic types",
+        "code generation",
+        "runtime type checking",
+        "typescript utility",
+        "type generation",
+        "javascript",
+        "ts",
+        "js",
+        "types",
+        "typing",
+        "code automation"
     ],
     "author": "Anthony Mazzie (https://github.com/AnthonyMazzie)",
     "license": "MIT",

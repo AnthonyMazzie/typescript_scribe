@@ -74,7 +74,7 @@ Use `generateTypeScriptType` to generate a TypeScript type definition based on t
 ```ts
 import { generateTypeScriptType } from 'typescript_scribe';
 
-const myObj = { id: 1, name: "Anthony", tasks: ["code", "test"] };
+const myObj = { id: 1, name: "Anthony", tasks: ["code", "sleep", "repeat"] };
 
 // Generate a TypeScript type from the object
 const tsType = generateTypeScriptType(myObj);
@@ -98,7 +98,7 @@ type GeneratedType = {
 You can customize the name of the generated TypeScript type by passing a second argument to `generateTypeScriptType`.
 
 ```ts
-const myObj = { id: 1, name: "Anthony", tasks: ["code", "test"] };
+const myObj = { id: 1, name: "Anthony", tasks: ["code", "sleep", "repeat"] };
 
 const tsType = generateTypeScriptType(myObj, 'CustomType');
 console.log(tsType);
@@ -122,8 +122,8 @@ const complexObj = {
   profile: {
     name: "Anthony",
     details: {
-      age: 30,
-      skills: ["TypeScript", "JavaScript"]
+      age: 35,
+      skills: ["TypeScript", "JavaScript", "AWS"]
     }
   }
 };
