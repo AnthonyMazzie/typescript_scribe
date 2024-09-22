@@ -8,30 +8,34 @@
 `typescript_scribe` is a lightweight library that automatically infers the structure of JavaScript objects and generates corresponding TypeScript types. It helps engineers quickly generate type definitions from dynamic data, reducing manual work and improving code quality.
 
 ## Table of Contents
-1. [Installation](#installation)
-2. [Basic Usage](#basic-usage)
+1. [Prerequisites](#prerequisites)
+2. [Installation](#installation)
+3. [Basic Usage](#basic-usage)
    - [Infer Type](#infer-type)
    - [Generate TypeScript Type](#generate-typescript-type)
-3. [Advanced Usage](#advanced-usage)
+4. [Advanced Usage](#advanced-usage)
    - [Custom Type Names](#custom-type-names)
    - [Nested Object Structures](#nested-object-structures)
-4. [Contributing](#contributing)
+5. [Contributing](#contributing)
    - [Pipeline](#pipeline)
    - [Linting with XO](#linting-with-xo)
    - [Testing with Vitest](#testing-with-vitest)
-5. [License](#license)
+6. [License](#license)
 
 ---
+
+## Prerequisites
+
+- **Node.js**: Ensure you have [Node.js](https://nodejs.org/) installed (version 16.x or above recommended).
+- **npm**: Ensure npm is installed. It comes bundled with Node.js.
+- **TypeScript**: You should have [TypeScript](https://www.typescriptlang.org/download/) installed and set up in your project.
 
 ## Installation
 
-To install the library:
-
-```bash
-npm install typescript_scribe
-```
+`npm install typescript_scribe` or `yarn add typescript_scribe`
 
 ---
+
 
 ## Basic Usage
 
