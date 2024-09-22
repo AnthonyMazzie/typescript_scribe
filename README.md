@@ -7,6 +7,22 @@
 
 `typescript_scribe` is a lightweight library that automatically infers the structure of JavaScript objects and generates corresponding TypeScript types. It helps engineers quickly generate type definitions from dynamic data, reducing manual work and improving code quality.
 
+<div style="display: flex; align-items: center;">
+  <div style="text-align: center;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo" width="80" height="80" />
+    <p>Node.js</p>
+  </div>
+  <div style="text-align: center; margin-left: 20px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript Logo" width="80" height="80" />
+    <p>JavaScript</p>
+  </div>
+  <div style="text-align: center; margin-left: 20px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" alt="TypeScript Logo" width="80" height="80" />
+    <p>TypeScript</p>
+  </div>
+</div>
+
+
 ## Table of Contents
 1. [Prerequisites](#prerequisites)
 2. [Installation](#installation)
