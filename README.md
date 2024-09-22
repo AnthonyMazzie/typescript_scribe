@@ -162,7 +162,7 @@ type ComplexType = {
 
 Contributions are welcome! Feel free to open issues or submit pull requests to improve the library. Whether it's bug fixes, new features, or documentation improvements, all contributions help make the project better.
 
-For more details on contributing, visit the [GitHub repository](https://github.com/AnthonyMazzie/type-scribe).
+For more details on contributing, visit the [GitHub repository](https://github.com/AnthonyMazzie/typescript_scribe).
 
 ---
 
