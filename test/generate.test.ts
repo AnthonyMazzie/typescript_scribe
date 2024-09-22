@@ -1,6 +1,29 @@
 import { generateTypeScriptType } from '../src';
 import { describe, it, expect } from 'vitest';
 
+const complexObj = {
+    team: [
+        {
+            name: "dev-team",
+            members: [
+                {
+                    id: 1001,
+                    username: "developerA",
+                    role: "admin",
+                    email: "devA@example.com",
+                    contributions: 250,
+                },
+                {
+                    id: 1002,
+                    username: "developerB",
+                    role: "contributor",
+                    email: "devB@example.com",
+                    contributions: 120,
+                },
+            ],
+        },
+    ]
+};
 
 // Test for generateTypeScriptType function
 describe('generateTypeScriptType', () => {
@@ -79,5 +102,38 @@ describe('generateTypeScriptType', () => {
         const tsType = generateTypeScriptType(mixedArrayObj, 'MixedArrayType');
         expect(tsType).toMatch(/type MixedArrayType = {/);
         expect(tsType).toMatch(/data: mixed\[\];/);
+    });
+
+    it('should generate a TypeScript type from a complex object', () => {
+        const tsType = generateTypeScriptType(complexObj, 'RepoType');
+
+        // Check that the generated type contains the correct fields for the object
+        expect(tsType).toMatch(/type RepoType = {/);
+        expect(tsType).toMatch(/team: {/);
+        expect(tsType).toMatch(/name: string;/);
+        expect(tsType).toMatch(/members: {/);
+        expect(tsType).toMatch(/id: number;/);
+        expect(tsType).toMatch(/username: string;/);
+        expect(tsType).toMatch(/role: string;/);
+        expect(tsType).toMatch(/email: string;/);
+        expect(tsType).toMatch(/contributions: number;/);
+    });
+
+    it('should handle objects with optional properties', () => {
+        const objWithOptional = { id: 1, name: undefined };
+        const tsType = generateTypeScriptType(objWithOptional, 'OptionalType');
+        expect(tsType).toBe(`type OptionalType = {\n  id: number;\n  name: undefined;\n};`);
+    });
+
+    it('should generate TypeScript type for arrays containing null values', () => {
+        const arrayWithNulls = { items: [null, null] };
+        const tsType = generateTypeScriptType(arrayWithNulls, 'NullArrayType');
+        expect(tsType).toBe(`type NullArrayType = {\n  items: unknown[];\n};`);
+    });
+
+    it('should generate TypeScript type for multiple levels of nested empty arrays', () => {
+        const nestedEmptyArrayObj = { data: [[[]]] };
+        const tsType = generateTypeScriptType(nestedEmptyArrayObj, 'NestedArrayType');
+        expect(tsType).toBe(`type NestedArrayType = {\n  data: unknown[][][];\n};`);
     });
 });

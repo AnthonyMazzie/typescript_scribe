@@ -1,7 +1,30 @@
 import { inferType } from '../src';
 import { describe, it, expect } from 'vitest';
 
-// Test for inferType function
+const complexObj = {
+    team: [
+        {
+            name: "dev-team",
+            members: [
+                {
+                    id: 1001,
+                    username: "developerA",
+                    role: "admin",
+                    email: "devA@example.com",
+                    contributions: 250,
+                },
+                {
+                    id: 1002,
+                    username: "developerB",
+                    role: "contributor",
+                    email: "devB@example.com",
+                    contributions: 120,
+                },
+            ],
+        },
+    ]
+};
+
 describe('inferType', () => {
     it('should infer primitive types', () => {
         expect(inferType(123)).toBe('number');
@@ -99,4 +122,50 @@ describe('inferType', () => {
         const objWithFunction = { id: 1, getName: () => 'Anthony' };
         expect(() => inferType(objWithFunction)).toThrow('Functions are not supported for type inference.');
     });
+
+    it('should infer types correctly for a complex object', () => {
+        const inferred = inferType(complexObj);
+
+        expect(inferred).toEqual({
+            team: [
+                {
+                    name: 'string',
+                    members: [
+                        {
+                            id: 'number',
+                            username: 'string',
+                            role: 'string',
+                            email: 'string',
+                            contributions: 'number',
+                        }
+                    ]
+                }
+            ]
+        });
+    });
+
+    it('should handle objects with optional properties', () => {
+        const objWithOptionalProps = { id: 1, name: undefined };
+        expect(inferType(objWithOptionalProps)).toEqual({
+            id: 'number',
+            name: 'undefined',
+        });
+    });
+
+    it('should handle arrays of empty objects', () => {
+        const arrayOfEmptyObjects = [{}, {}];
+        expect(inferType(arrayOfEmptyObjects)).toEqual([{}]);
+    });
+
+
+    it('should handle an array with an empty object', () => {
+        const arrayWithEmptyObject = [{ id: 1 }, {}];
+        expect(inferType(arrayWithEmptyObject)).toEqual(['mixed']);
+    });
+
+    it('should handle arrays containing only null values', () => {
+        const arrayOfNulls = [null, null];
+        expect(inferType(arrayOfNulls)).toEqual(['null']);
+    });
+
 });
