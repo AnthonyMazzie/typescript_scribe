@@ -43,9 +43,7 @@
     - [Pipeline](#pipeline)
     - [Linting with XO](#linting-with-xo)
     - [Testing with Vitest](#testing-with-vitest)
-    - [How to Contribute](#how-to-contribute)
-13. [Support and FAQ](#support-and-faq)
-14. [License](#license)
+13. [License](#license)
 
 
 ## Introduction 
