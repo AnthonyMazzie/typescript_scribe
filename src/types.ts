@@ -11,5 +11,6 @@ export type InferredType =
   | 'Promise'
   | 'undefined'
   | 'null'
+  | 'Date'
   | { [key: string]: InferredType }
   | InferredType[];
