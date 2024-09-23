@@ -152,7 +152,6 @@ describe('generateTypeScriptType', () => {
     it('should generate TypeScript type for Date objects', () => {
         const objWithDate = { createdAt: new Date() };
         const tsType = generateTypeScriptType(objWithDate, 'DateType');
-        expect(tsType).toBe(`type DateType = {\n  createdAt: string;\n};`);
+        expect(tsType).toBe(`type DateType = {\n  createdAt: Date;\n};`);
     });
-
 });

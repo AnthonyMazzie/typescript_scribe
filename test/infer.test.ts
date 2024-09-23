@@ -168,4 +168,10 @@ describe('inferType', () => {
         expect(inferType(arrayOfNulls)).toEqual(['null']);
     });
 
+    it('should infer Date objects as Date', () => {
+        const dateObj = new Date();
+        expect(inferType(dateObj)).toBe('Date');
+    });
+
+
 });

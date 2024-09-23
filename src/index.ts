@@ -49,7 +49,7 @@ export function inferType(value: any): InferredType {
 
   // Handle Date objects (specific handling)
   if (value instanceof Date) {
-    return 'string'; // Treat Date objects as strings in TypeScript
+    return 'Date'
   }
 
   // Handle functions (throw an error)
