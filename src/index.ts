@@ -28,8 +28,6 @@ import { InferredType } from './types';
  * inferType(Promise.resolve()) // Returns 'Promise'
  */
 export function inferType(value: any): InferredType {
-  // Log the current value being inferred for better tracking
-
   // Handle undefined and null values
   if (value === undefined) {
     return 'undefined';
@@ -49,6 +47,16 @@ export function inferType(value: any): InferredType {
     return 'boolean';
   }
 
+  // Handle Date objects (specific handling)
+  if (value instanceof Date) {
+    return 'string'; // Treat Date objects as strings in TypeScript
+  }
+
+  // Handle functions (throw an error)
+  if (typeof value === 'function') {
+    throw new Error('Functions are not supported for type inference.');
+  }
+
   // Handle arrays, including empty arrays
   if (Array.isArray(value)) {
     if (value.length === 0) {
@@ -58,7 +66,7 @@ export function inferType(value: any): InferredType {
     // Infer types of array elements
     const elementTypes = value.map(inferType);
 
-    // Check if all elements in the array are of the same type
+    // Collect unique types and remove duplicates
     const uniqueElementTypes = [...new Set(elementTypes.map(el => JSON.stringify(el)))].map(el => JSON.parse(el));
 
     if (uniqueElementTypes.length > 1) {
@@ -82,11 +90,6 @@ export function inferType(value: any): InferredType {
     const result: { [key: string]: InferredType } = {};
     for (const key in value) {
       if (value.hasOwnProperty(key)) {
-        if (typeof value[key] === 'function') {
-          throw new Error(`Functions are not supported for type inference. Problematic key: ${key}`);
-        }
-
-        // Recursively infer the type for the property
         result[key] = inferType(value[key]);
       }
     }
@@ -96,6 +99,8 @@ export function inferType(value: any): InferredType {
   // Default to 'unknown' for unrecognized types
   return 'unknown';
 }
+
+
 
 /**
  * Generates a TypeScript type definition from an inferred structure.
@@ -138,21 +143,30 @@ export function generateTypeScriptType(
   }
 
   // Recursive function to format inferred types, including nested objects and arrays
-  const formatType = (type: InferredType, level = 1): string => {
-    const indent = '  '.repeat(level); // Dynamic indentation based on nesting level
+  const formatType = (type: InferredType, level = 1, isArrayElement = false): string => {
+    const indent = '  '.repeat(level);  // Dynamic indentation based on nesting level
+    const baseIndent = '  '.repeat(level - 1);  // Base indentation for array elements
 
     if (Array.isArray(type)) {
-      return `${formatType(type[0], level)}[]`; // Format arrays based on the type of their elements
+      // For array elements, recursively format the type and ensure correct indentation
+      return `${formatType(type[0], level + 1)}[]`; // Increase level for array items
     } else if (typeof type === 'object' && type !== null) {
-      // Format object properties
+      // Special case for empty objects: return just "{}"
+      if (Object.keys(type).length === 0) {
+        return '{}';
+      }
+
+      // Format object properties and handle indentation correctly for array elements
       const objectParts = Object.keys(type).map(
-        (key) => `${indent}${key}: ${formatType(type[key], level + 1)};`
+        (key) => `${isArrayElement ? baseIndent + '    ' : indent}${key}: ${formatType(type[key], level + 1)};`
       );
-      return `{\n${objectParts.join('\n')}\n${'  '.repeat(level - 1)}}`;
+
+      return `{\n${objectParts.join('\n')}\n${isArrayElement ? baseIndent : '  '.repeat(level - 1)}}`;
     } else {
       return type === 'null' ? 'unknown' : (type as string);
     }
   };
+
 
   // Format each top-level property and generate the final TypeScript type definition
   const typeParts = Object.keys(inferred).map(
