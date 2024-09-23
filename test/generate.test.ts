@@ -136,4 +136,23 @@ describe('generateTypeScriptType', () => {
         const tsType = generateTypeScriptType(nestedEmptyArrayObj, 'NestedArrayType');
         expect(tsType).toBe(`type NestedArrayType = {\n  data: unknown[][][];\n};`);
     });
+
+    it('should generate TypeScript type for arrays of empty objects', () => {
+        const arrayOfEmptyObjects = { items: [{}, {}] };
+        const tsType = generateTypeScriptType(arrayOfEmptyObjects, 'EmptyObjectArrayType');
+        expect(tsType).toBe(`type EmptyObjectArrayType = {\n  items: {}[];\n};`);
+    });
+
+    it('should generate TypeScript type for arrays of objects', () => {
+        const arrayOfObjects = { users: [{ id: 1, name: 'Anthony' }, { id: 2, name: 'Jane' }] };
+        const tsType = generateTypeScriptType(arrayOfObjects, 'UserArrayType');
+        expect(tsType).toBe(`type UserArrayType = {\n  users: {\n    id: number;\n    name: string;\n  }[];\n};`);
+    });
+
+    it('should generate TypeScript type for Date objects', () => {
+        const objWithDate = { createdAt: new Date() };
+        const tsType = generateTypeScriptType(objWithDate, 'DateType');
+        expect(tsType).toBe(`type DateType = {\n  createdAt: string;\n};`);
+    });
+
 });
