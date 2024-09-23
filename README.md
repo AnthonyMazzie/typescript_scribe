@@ -52,13 +52,11 @@
 
 ## Features
 
-- **Type Inference for Objects and Arrays**: Automatically infers types from complex, nested objects and arrays.
-- **Date and Promise Handling**: Recognizes and correctly infers `Date` and `Promise` objects in JavaScript.
-- **Mixed Types and Empty Arrays**: Handles arrays with mixed types and returns `'mixed'` for accurate representation, while empty arrays are inferred as `['unknown']`.
-- **Function Error Handling**: Throws an error when functions are passed, ensuring only supported types are inferred.
-- **Customizable Type Names**: Allows customization of the generated TypeScript type names to suit your project’s needs.
-- **Supports Nested Object Structures**: Recursively infers types for deeply nested objects and arrays with ease.
-- **TypeScript-First Approach**: Generates TypeScript-compatible type definitions without manual intervention.
+- **Type Inference for Objects and Arrays**: Automatically infers types from complex and nested objects or arrays.
+- **Date and Promise Handling**: Correctly infers `Date` and `Promise` objects in JavaScript.
+- **Mixed Types and Empty Arrays**: Handles arrays with mixed types, returning `'mixed'` for accurate representation, and infers empty arrays as `['unknown']`.
+- **Support for Nested Object Structures**: Recursively infers types for deeply nested objects and arrays with ease.
+- **TypeScript-First Approach**: Generates TypeScript-compatible type definitions without the need for manual intervention.
 
 ## Prerequisites
 
