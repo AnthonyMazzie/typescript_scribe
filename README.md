@@ -40,6 +40,7 @@
 11. [Known Issues and Limitations](#known-issues-and-limitations)
 12. [Contributing](#contributing)
     - [Support the Project](#support-the-project)
+    - [How to Contribute](#how-to-contribute)
     - [Pipeline](#pipeline)
     - [Linting with XO](#linting-with-xo)
     - [Testing with Vitest](#testing-with-vitest)
@@ -306,6 +307,10 @@ The `InferredType` returned by `inferType` can be one of the following:
 
 ## Contributing
 
+### Support the project
+If you find this library helpful and want to support its development, consider [buying me a coffee](https://www.buymeacoffee.com/anthonymazzie) ☕. Your support fuels my ability to keep building great tools for the community!
+
+### How to contribute
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-branch`).
 3. Make your changes and commit them (`git commit -m 'Add some feature'`).
@@ -313,10 +318,6 @@ The `InferredType` returned by `inferType` can be one of the following:
 5. Open a pull request.
 
 For large changes, [open an issue](https://github.com/AnthonyMazzie/typescript_scribe/issues) first to discuss the potential implementation.
-
-
-### Support the project
-If you find this library helpful and want to support its development, consider [buying me a coffee](https://www.buymeacoffee.com/anthonymazzie) ☕. Your support fuels my ability to keep building great tools for the community!
 
 ### Pipeline
 
