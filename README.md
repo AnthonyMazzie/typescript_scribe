@@ -33,6 +33,7 @@
    - [Custom Type Names](#custom-type-names)
    - [Nested Object Structures](#nested-object-structures)
 5. [Contributing](#contributing)
+   - [Support the project](#support-the-project)
    - [Pipeline](#pipeline)
    - [Linting with XO](#linting-with-xo)
    - [Testing with Vitest](#testing-with-vitest)
@@ -179,6 +180,9 @@ type ComplexType = {
 Contributions are welcome! Feel free to open issues or submit pull requests to improve the library. Whether it's bug fixes, new features, or documentation improvements, all contributions help make the project better.
 
 For more details on contributing, visit the [GitHub repository](https://github.com/AnthonyMazzie/typescript_scribe).
+
+### Support the project
+If you find this library helpful and want to support its development, consider [buying me a coffee](https://www.buymeacoffee.com/anthonymazzie) ☕. Your support fuels my ability to keep building great tools for the community!
 
 ---
 
