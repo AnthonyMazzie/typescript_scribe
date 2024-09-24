@@ -291,11 +291,9 @@ The `InferredType` returned by `inferType` can be one of the following:
 
 ## Additional Notes
 
-- **Date Handling**: `Date` objects are inferred as `'Date'` to ensure accurate type inference, reflecting their use as a specialized type in TypeScript rather than as a `'string'`.
-
+- **Date Handling**: `Date` objects are inferred as `'Date'` to ensure accurate type inference, reflecting their use as a specialized type in TypeScript.
 - **Empty Arrays**: Empty arrays are inferred as `['unknown']`, representing an array with unknown element types.
-
-- **Function Error**: If a function is passed to `inferType`, an error will be thrown because functions are not supported for type inference. (`Functions are not supported for type inference.`)
+- **Function Error**: If a function is passed to `inferType`, an error will be thrown because functions are not supported for type inference.
 
 ## Known Issues and Limitations
 
@@ -327,9 +325,7 @@ We are currently implementing a **GitHub Actions** pipeline (work in progress) t
 3. Successful changes are packaged and prepared for **npm** publishing.
 
 ### Future Pipeline Improvements
-- Automating the publishing process to **npm** after tests pass on the `main` branch.
-- Adding coverage reports for better code health insights.
-- Ensuring cross-environment compatibility testing.
+- Cross-environment compatibility testing.
 
 ### Linting with XO
 
