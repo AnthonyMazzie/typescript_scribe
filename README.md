@@ -6,21 +6,20 @@
 ![npm](https://img.shields.io/npm/dt/typescript_scribe)
 [![codecov](https://codecov.io/gh/AnthonyMazzie/typescript_scribe/graph/badge.svg?token=Eg1Mhyy2bv)](https://codecov.io/gh/AnthonyMazzie/typescript_scribe)
 
-<div style="display: flex; align-items: center;">
+<div style="display: flex; justify-content: space-evenly; align-items: center; gap: 20px;">
   <div style="text-align: center;">
     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo" width="80" height="80" />
     <p>Node.js</p>
   </div>
-  <div style="text-align: center; margin-left: 20px;">
+  <div style="text-align: center;">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript Logo" width="80" height="80" />
     <p>JavaScript</p>
   </div>
-  <div style="text-align: center; margin-left: 20px;">
+  <div style="text-align: center;">
     <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" alt="TypeScript Logo" width="80" height="80" />
     <p>TypeScript</p>
   </div>
 </div>
-
 
 ## Table of Contents
 1. [Introduction](#introduction)

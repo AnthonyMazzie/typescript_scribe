@@ -65,7 +65,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Bump version and publish to npm
+      - name: Publish to npm
         run: |
           npm publish
         env:
