@@ -4,6 +4,7 @@
 ![GitHub](https://img.shields.io/github/license/AnthonyMazzie/typescript_scribe)
 ![npm](https://img.shields.io/npm/v/typescript_scribe)
 ![npm](https://img.shields.io/npm/dt/typescript_scribe)
+[![codecov](https://codecov.io/gh/AnthonyMazzie/typescript_scribe/graph/badge.svg?token=Eg1Mhyy2bv)](https://codecov.io/gh/AnthonyMazzie/typescript_scribe)
 
 <div style="display: flex; align-items: center;">
   <div style="text-align: center;">
@@ -19,6 +20,7 @@
     <p>TypeScript</p>
   </div>
 </div>
+
 
 ## Table of Contents
 1. [Introduction](#introduction)
