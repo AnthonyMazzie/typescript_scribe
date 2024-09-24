@@ -67,7 +67,6 @@ jobs:
 
       - name: Bump version and publish to npm
         run: |
-          npm version patch # Automatically bump version (e.g., patch, minor, or major)
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
