@@ -325,9 +325,7 @@ We are currently implementing a **GitHub Actions** pipeline (work in progress) t
 3. Successful changes are packaged and prepared for **npm** publishing.
 
 ### Future Pipeline Improvements
-- Automating the publishing process to **npm** after tests pass on the `main` branch.
-- Adding coverage reports for better code health insights.
-- Ensuring cross-environment compatibility testing.
+- Cross-environment compatibility testing.
 
 ### Linting with XO
 
